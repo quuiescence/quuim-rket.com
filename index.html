@@ -1,0 +1,3037 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>quuim⚡rket - Injector & Game Booster</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0f;
+            --card-bg: #16161a;
+            --card-hover: #202025;
+            --accent-glow: #ffffff;
+            --border-glow: rgba(255, 255, 255, 0.3);
+            --shadow-glow: 0 0 15px rgba(255, 255, 255, 0.12);
+            --text-main: #ffffff;
+            --text-muted: #9999a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: url("1790511958978.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #121215;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #22222a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-glow);
+            box-shadow: 0 0 10px rgba(255,255,255,0.4);
+        }
+
+        .brand-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
+
+    animation: logoGlow 2.5s ease-in-out infinite;
+}
+
+.brand-title span {
+    color: #ffffff;
+    display: inline-block;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.5),
+        0 0 10px rgba(255,255,255,0.4);
+
+    animation: lightningPulse 1.8s ease-in-out infinite;
+}
+
+
+/* ANIMASI NAMA TOKO */
+@keyframes logoGlow {
+
+    0%, 100% {
+        opacity: 0.85;
+        transform: translateY(0);
+        text-shadow:
+            0 0 0 rgba(255,255,255,0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-1px);
+
+        text-shadow:
+            0 0 5px rgba(255,255,255,0.5),
+            0 0 12px rgba(255,255,255,0.4),
+            0 0 20px rgba(255,255,255,0.2);
+    }
+}
+
+
+/* ANIMASI ⚡ */
+@keyframes lightningPulse {
+
+    0%, 85%, 100% {
+        transform: scale(1);
+
+        text-shadow:
+            0 0 5px rgba(255,255,255,0.5),
+            0 0 10px rgba(255,255,255,0.4);
+    }
+
+    90% {
+        transform: scale(1.2);
+
+        text-shadow:
+            0 0 8px #ffffff,
+            0 0 18px #ffffff,
+            0 0 30px rgba(255,255,255,0.8);
+    }
+}
+.language-switch {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid #2a2a35;
+    color: #9999a6;
+    padding: 5px 7px;
+    border-radius: 7px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.lang-btn.active {
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 0 7px rgba(255,255,255,0.25);
+}
+
+.lang-btn:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255,255,255,0.6);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 16px;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Manual Banner Slider */
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid #2a2a35;
+            box-shadow: var(--shadow-glow);
+            background-color: #16161a;
+        }
+
+        .banner-track {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .banner-img {
+            width: 33.333%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+        }
+
+        .banner-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .banner-dot.active {
+            background: #ffffff;
+            box-shadow: 0 0 6px #ffffff;
+        }
+
+        /* Search Bar */
+        .search-box {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            background-color: var(--card-bg);
+            border: 1px solid #2e2e38;
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-glow);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: var(--text-muted);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        /* ==============================
+   ANIMASI CARD PRODUK
+============================== */
+
+.product-card {
+    position: relative;
+    background-color: var(--card-bg);
+    border: 1px solid #2a2a35;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        background-color 0.35s ease;
+
+    animation: productFloat 4s ease-in-out infinite;
+}
+
+/* Efek naik saat disentuh / hover */
+.product-card:hover {
+    transform: translateY(-7px) scale(1.02);
+    border-color: #ffffff;
+
+    box-shadow:
+        0 10px 30px rgba(255,255,255,0.12),
+        0 0 20px rgba(255,255,255,0.08);
+
+    background-color: var(--card-hover);
+}
+
+/* Efek saat ditekan di HP */
+.product-card:active {
+    transform: scale(0.97);
+}
+
+/* Cahaya berjalan di card */
+.product-card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.13),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: productShine 4s ease-in-out infinite;
+
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Floating pelan */
+@keyframes productFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Cahaya bergerak */
+@keyframes productShine {
+
+    0% {
+        left: -120%;
+    }
+
+    40% {
+        left: -120%;
+    }
+
+    70% {
+        left: 150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-glow);
+            box-shadow: var(--shadow-glow);
+            background-color: var(--card-hover);
+        }
+
+        .product-img-container {
+            width: 100%;
+            height: 110px;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover .product-img-container img {
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 10px 12px;
+            background: linear-gradient(to bottom, #16161a, #111114);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 2px solid var(--accent-glow);
+        }
+
+        .product-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .product-provider {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+      /* ==============================
+   RATING PRODUK
+============================== */
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 1px;
+}
+
+.rating-stars span {
+    color: #ffffff;
+    font-size: 0.72rem;
+    text-shadow: 0 0 6px rgba(255,255,255,0.4);
+}
+
+.rating-score {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+}
+      /* ==============================
+   ULASAN PRODUK
+============================== */
+
+.review-box {
+    margin-top: 12px;
+    padding: 16px;
+    background: var(--card-bg);
+    border: 1px solid #2a2a35;
+    border-radius: 14px;
+}
+
+.review-box h3 {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.review-input {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    resize: vertical;
+    border-radius: 10px;
+    border: 1px solid #2a2a35;
+    background: #111118;
+    color: #fff;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.8rem;
+}
+
+.review-input:focus {
+    border-color: rgba(255,255,255,0.5);
+}
+
+.review-submit {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.review-list {
+    margin-top: 16px;
+}
+
+.review-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #24242d;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-item-rating {
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+}
+
+.review-item-text {
+    font-size: 0.8rem;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.review-item-date {
+    margin-top: 5px;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+      /* ==============================
+   LOGO TOKO DI CARD PRODUK
+============================== */
+
+.product-name-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.store-logo {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.35),
+        0 0 16px rgba(255,255,255,0.12);
+
+    animation: storeLogoFloat 2.8s ease-in-out infinite;
+
+    flex-shrink: 0;
+}
+
+@keyframes storeLogoFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-4px) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(0deg);
+
+        box-shadow:
+            0 0 10px rgba(255,255,255,0.55),
+            0 0 20px rgba(255,255,255,0.18);
+    }
+
+    75% {
+        transform: translateY(-4px) rotate(2deg);
+    }
+}
+/* ==============================
+   LOGO GAME BOOSTER
+============================== */
+
+.booster-name-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.booster-logo {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.35),
+        0 0 16px rgba(255,255,255,0.12);
+
+    animation: boosterLogoFloat 2.8s ease-in-out infinite;
+
+    flex-shrink: 0;
+}
+
+@keyframes boosterLogoFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-4px) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(0deg);
+
+        box-shadow:
+            0 0 10px rgba(255,255,255,0.55),
+            0 0 20px rgba(255,255,255,0.18);
+    }
+
+    75% {
+        transform: translateY(-4px) rotate(2deg);
+    }
+      }
+        /* Dynamic Pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Checkout Page Styles */
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--accent-glow);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 16px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.5);
+        }
+
+        .form-card {
+            background-color: var(--card-bg);
+            border: 1px solid #2a2a35;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: var(--accent-glow);
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .input-group.single {
+            grid-template-columns: 1fr;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            background-color: #0d0d0f;
+            border: 1px solid #2e2e38;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: var(--accent-glow);
+            box-shadow: 0 0 8px rgba(255,255,255,0.2);
+        }
+
+        .nominal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .nominal-item {
+            background-color: #0d0d0f;
+            border: 1px solid #2e2e38;
+            border-radius: 10px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .nominal-item:hover, .nominal-item.selected {
+            border-color: var(--accent-glow);
+            background-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+        }
+
+        .nominal-item .item-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .nominal-item .item-price {
+            font-size: 0.8rem;
+            color: var(--accent-glow);
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .payment-item {
+            background-color: #0d0d0f;
+            border: 1px solid #2e2e38;
+            border-radius: 10px;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .payment-item:hover, .payment-item.selected {
+            border-color: var(--accent-glow);
+            background-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ffffff, #dcdce6);
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+/* ==============================
+   CHECKOUT BUTTONS
+============================== */
+
+.checkout-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkout-buttons .checkout-btn {
+    margin-top: 0;
+}
+
+.cart-add-btn {
+    width: 100%;
+    padding: 14px;
+
+    background: #16161a;
+    color: #ffffff;
+
+    font-weight: bold;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 12px;
+
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.cart-add-btn:hover {
+    background: #202025;
+
+    border-color: #ffffff;
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.18);
+
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   CART ITEMS
+============================== */
+
+.cart-empty {
+    background: var(--card-bg);
+    border: 1px solid #2a2a35;
+    border-radius: 14px;
+    padding: 30px 16px;
+
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.cart-item {
+    background: var(--card-bg);
+
+    border: 1px solid #2a2a35;
+    border-radius: 14px;
+
+    padding: 14px;
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.cart-item:hover {
+    border-color: #ffffff;
+
+    background: var(--card-hover);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.12);
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-game {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.cart-item-variant {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    font-size: 0.82rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.cart-delete {
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+
+    background: #0d0d0f;
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: all 0.2s ease;
+}
+
+.cart-delete:hover {
+    background: #ffffff;
+    color: #000000;
+}
+        .checkout-btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+/* ==============================
+   CART TOTAL
+============================== */
+
+.cart-summary {
+    margin-top: 16px;
+    padding: 16px;
+
+    background: var(--card-bg);
+    border: 1px solid #2a2a35;
+    border-radius: 14px;
+
+    box-shadow: 0 0 15px rgba(255,255,255,0.05);
+}
+
+.cart-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    font-size: 0.9rem;
+}
+
+.cart-summary-total {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    padding: 14px;
+
+    margin-top: 4px;
+
+    background: #ffffff;
+    color: #000000;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.cart-checkout-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.3);
+}
+
+.cart-checkout-btn:active {
+    transform: scale(0.97);
+}
+      /* ================================
+   CHECKOUT KERANJANG
+================================ */
+
+.cart-checkout-summary {
+    margin-top: 16px;
+}
+
+.cart-checkout-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: var(--card-bg);
+    border: 1px solid #2a2a35;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+.cart-checkout-total strong {
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+.cart-checkout-item {
+    background: var(--card-bg);
+    border: 1px solid #2a2a35;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: 0.25s ease;
+}
+
+.cart-checkout-item:hover {
+    border-color: rgba(255,255,255,0.45);
+    box-shadow: 0 0 18px rgba(255,255,255,0.06);
+}
+
+.cart-checkout-item h3 {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.cart-checkout-variant {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+}
+
+.cart-checkout-item label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.cart-checkout-item .input-group {
+    margin-top: 10px;
+}
+        /* Professional Footer Section */
+        footer {
+            background: rgba(17, 17, 20, 0.55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid #22222a;
+            padding: 30px 16px;
+            margin-top: auto;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-about h4 {
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-about p {
+            line-height: 1.6;
+            color: #b0b0bc;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(22, 22, 26, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #22222a;
+        }
+
+        .footer-links p {
+            color: #dcdce6;
+        }
+
+        .footer-links a {
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: 600;
+            text-shadow: 0 0 6px rgba(255,255,255,0.4);
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.75rem;
+            margin-top: 10px;
+            border-top: 1px solid #1e1e24;
+            padding-top: 14px;
+            color: #777782;
+        }
+      /* ==============================
+   FLOATING CART
+============================== */
+
+.floating-cart {
+    position: fixed;
+    right: 18px;
+    bottom: 78px;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 15px;
+
+    background: rgba(20, 20, 24, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px;
+
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.15);
+
+    transition: all 0.25s ease;
+}
+.history-button {
+    position: fixed;
+    right: 18px;
+    bottom: 138px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+.floating-cart:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.35);
+}
+
+.floating-cart b {
+    min-width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    color: #000000;
+
+    border-radius: 50%;
+
+    font-size: 0.7rem;
+}
+
+.floating-cart.cart-bump {
+    animation: cartBump 0.4s ease;
+}
+
+@keyframes cartBump {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+      .customer-service {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 15px;
+    background: rgba(20, 20, 24, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255,255,255,0.15);
+    transition: all 0.25s ease;
+}
+
+.customer-service:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.35);
+}
+
+.customer-service span {
+    white-space: nowrap;
+}
+      /* POPUP PROMO */
+.promo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.promo-box {
+    position: relative;
+    width: min(92vw, 540px);
+    max-height: 88vh;
+    animation: promoShow 0.35s ease;
+}
+
+.promo-box img {
+    display: block;
+    width: 100%;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 0 35px rgba(255,255,255,0.18);
+}
+
+.promo-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    background: rgba(15,15,18,0.95);
+    color: white;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-close:hover {
+    transform: scale(1.08);
+    background: white;
+    color: black;
+}
+
+@keyframes promoShow {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+      /* ==============================
+   RIWAYAT PESANAN
+============================== */
+
+.history-empty {
+    padding: 35px 20px;
+    text-align: center;
+    color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.02);
+}
+
+.order-card {
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+}
+
+.order-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.order-id {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.order-status {
+    font-size: 0.68rem;
+    padding: 5px 8px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+}
+
+.order-date {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.order-product {
+    padding: 10px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.order-product-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.order-product-variant {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.order-product-price {
+    font-size: 0.78rem;
+    margin-top: 5px;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-weight: 700;
+}
+
+.order-payment {
+    margin-top: 6px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+      /* ==============================
+   ESCANOR CHIBI MASCOT
+============================== */
+
+.escanor-mascot {
+    position: fixed;
+    right: 12px;
+    bottom: 155px;
+    width: 145px;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    animation: escanorFloat 3s ease-in-out infinite;
+}
+
+.escanor-img {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.55));
+}
+
+.escanor-bubble {
+    position: relative;
+    width: 145px;
+    min-height: 48px;
+    padding: 10px 12px;
+    margin-bottom: 4px;
+
+    background: #fff;
+    color: #111;
+    border-radius: 16px;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* ekor bubble */
+.escanor-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 10px solid #fff;
+}
+
+@keyframes escanorFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand-container" onclick="goHome()">
+            <img src="1790429911484.png" alt="Logo" class="brand-logo">
+            <div class="brand-title">quuim<span>⚡</span>rket</div>
+        </div>
+      <div class="language-switch">
+    <button id="langID" class="lang-btn active" onclick="setLanguage('id')">🇮🇩 ID</button>
+    <button id="langEN" class="lang-btn" onclick="setLanguage('en')">🇬🇧 EN</button>
+      </div>
+        <div class="header-icons">
+            <a href="https://wa.me/6289525973459" target="_blank" title="WhatsApp">
+                <img src="aa5eafc27d1d33be41ee1ca323604c93.jpg" alt="WhatsApp" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com/quuiescence?stkn=MWVjc2E2YjRqaGJlYQ==" target="_blank" title="Instagram">
+                <img src="0ec4399787167226e7c719b614dd060d.jpg" alt="Instagram" class="social-icon">
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- HOME PAGE -->
+        <div id="home-page" class="page active">
+            <!-- Manual Banner Slider -->
+            <div class="banner-slider" id="bannerSlider">
+                <div class="banner-track" id="bannerTrack">
+                    <img src="IMG-20260926-WA0033.jpg" alt="Banner 1" class="banner-img">
+                    <img src="IMG-20260926-WA0034.jpg" alt="Banner 2" class="banner-img">
+                    <img src="IMG-20260926-WA0035.jpg" alt="Banner 3" class="banner-img">
+                </div>
+                <div class="banner-nav">
+                    <div class="banner-dot active" onclick="currentSlide(0)"></div>
+                    <div class="banner-dot" onclick="currentSlide(1)"></div>
+                    <div class="banner-dot" onclick="currentSlide(2)"></div>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-box">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" id="searchInput" placeholder="Cari game (Mobile Legends, Free Fire, Game Booster)..." onkeyup="filterGames()">
+            </div>
+
+            <div class="section-title">
+                🔥 POPULER SEKARANG!
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Mobile Legends -->
+                <div class="product-card" onclick="openDetail('ml')">
+                    <div class="product-img-container">
+                        <img src="./40eb08d0268f7df4e2083039d0608a92.jpg" alt="Mobile Legends">
+                    </div>
+                    <div class="product-info">
+    <div class="product-name-row">
+
+        <div>
+            <div class="product-name">Mobile Legends</div>
+            <div class="product-provider">Moonton</div>
+          <div class="product-rating">
+    <div class="rating-stars">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+    </div>
+    <span class="rating-score">4.9</span>
+          </div>
+        </div>
+
+        <img
+            src="1790429911484.png"
+            alt="Logo quuim⚡rket"
+            class="store-logo"
+        >
+
+    </div>
+</div>
+                </div>
+
+                <!-- Free Fire -->
+                <div class="product-card" onclick="openDetail('ff')">
+                    <div class="product-img-container">
+                        <img src="05e55d6dd73173f755ab5fde46e98b16.jpg" alt="Free Fire">
+                    </div>
+                    <div class="product-info">
+    <div class="product-name-row">
+
+        <div>
+            <div class="product-name">Free Fire</div>
+            <div class="product-provider">Garena</div>
+          <div class="product-rating">
+    <div class="rating-stars">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+    </div>
+    <span class="rating-score">4.8</span>
+          </div>
+        </div>
+
+        <img
+            src="1790429911484.png"
+            alt="Logo quuim⚡rket"
+            class="store-logo"
+        >
+
+    </div>
+                    </div>
+                </div>
+
+                <!-- Game Booster -->
+<div class="product-card" onclick="openDetail('booster')">
+    <div class="product-img-container">
+        <img src="1790431633608.png" alt="Game Booster">
+      <div class="product-rating">
+    <div class="rating-stars">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+    </div>
+    <span class="rating-score">4.9</span>
+      </div>
+    </div>
+
+    <div class="product-info">
+        <div class="booster-name-row">
+
+            <div>
+    <div class="product-name">Game Booster</div>
+    <div class="product-provider">quuim⚡rket</div>
+
+    <div class="product-rating">
+        <div class="rating-stars">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+        </div>
+
+        <span class="rating-score">4.9</span>
+    </div>
+            </div>
+
+            <img
+                src="1790429911484.png"
+                alt="Logo quuim⚡rket"
+                class="booster-logo"
+            >
+
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+      <!-- RIWAYAT PESANAN -->
+<div id="history-page" class="page">
+
+    <button class="back-btn" onclick="openCart()">
+        ← Kembali ke Keranjang
+    </button>
+<button class="back-btn" onclick="goHome()">
+    ← Kembali ke Beranda
+</button>
+    <h2 style="margin-bottom: 16px; font-size: 1.2rem;">
+        🧾 Riwayat Pesanan
+    </h2>
+
+    <div id="orderHistory"></div>
+
+</div>
+<!-- CART PAGE -->
+<div id="cart-page" class="page">
+
+    <button class="back-btn" onclick="goHome()">
+        ← Kembali ke Beranda
+    </button>
+
+    <h2 style="margin-bottom: 16px; font-size: 1.2rem;">
+        🛒 Keranjang Saya
+    </h2>
+
+    <div id="cartItems"></div>
+
+</div><!-- CART CHECKOUT PAGE -->
+<div id="cart-checkout-page" class="page">
+
+    <button class="back-btn" onclick="openCart()">
+        ← Kembali ke Keranjang
+    </button>
+
+    <h2 style="margin-bottom: 16px; font-size: 1.2rem;">
+        🧾 Checkout Pesanan
+    </h2>
+
+    <!-- PRODUK DALAM KERANJANG -->
+    <div id="cartCheckoutItems"></div>
+
+    <!-- RINGKASAN -->
+    <div class="cart-checkout-summary">
+
+        <div class="cart-checkout-total">
+            <span>Total Pembayaran</span>
+
+            <strong id="cartCheckoutTotal">
+                Rp 0
+            </strong>
+        </div>
+
+        <!-- PEMBAYARAN -->
+        <div class="form-card" style="margin-top: 12px;">
+
+            <h3>Metode Pembayaran</h3>
+
+            <div
+                class="payment-grid"
+                id="cartCheckoutPayment">
+
+                <div
+                    class="payment-item"
+                    onclick="selectCartPayment(this)">
+                    Dana
+                </div>
+
+                <div
+                    class="payment-item"
+                    onclick="selectCartPayment(this)">
+                    OVO
+                </div>
+
+                <div
+                    class="payment-item"
+                    onclick="selectCartPayment(this)">
+                    Gopay
+                </div>
+
+                <div
+                    class="payment-item"
+                    onclick="selectCartPayment(this)">
+                    QRIS All Payment
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TOMBOL PESAN -->
+        <button
+            class="checkout-btn"
+            onclick="submitCartCheckout()">
+
+            PESAN SEKARANG ⚡
+
+        </button>
+
+    </div>
+
+</div>
+        <!-- DETAIL / TOPUP PAGE -->
+        <div id="detail-page" class="page">
+            <button class="back-btn" onclick="goHome()">← Kembali ke Beranda</button>
+            
+            <h2 id="detail-title" style="margin-bottom: 16px; font-size: 1.2rem;">Top Up Game</h2>
+<!-- RATING & ULASAN -->
+<div class="detail-rating">
+
+    <div class="detail-rating-title">
+        Beri Rating Produk
+    </div>
+
+    <div class="detail-rating-stars">
+
+        <span onclick="giveProductRating(1)">★</span>
+        <span onclick="giveProductRating(2)">★</span>
+        <span onclick="giveProductRating(3)">★</span>
+        <span onclick="giveProductRating(4)">★</span>
+        <span onclick="giveProductRating(5)">★</span>
+
+    </div>
+
+    <div class="detail-rating-score" id="detailRatingScore">
+        Belum ada rating
+    </div>
+
+    <div class="detail-rating-message" id="detailRatingMessage"></div>
+
+</div>
+
+<div class="review-box">
+
+    <h3>💬 Tulis Ulasan</h3>
+
+    <textarea
+        id="reviewInput"
+        class="review-input"
+        placeholder="Tulis pengalaman kamu menggunakan produk ini..."></textarea>
+
+    <button
+        class="review-submit"
+        onclick="submitProductReview()">
+
+        KIRIM ULASAN
+
+    </button>
+
+    <div class="review-list" id="reviewList"></div>
+
+</div>
+            <!-- Form ID Akun (Dynamic) -->
+            <div class="form-card" id="accountSection">
+                <h3 id="form-label-id">1. Masukkan ID & Server</h3>
+                <div class="input-group" id="inputContainer">
+                    <!-- Dynamic Inputs inserted via JS -->
+                </div>
+            </div>
+
+            <!-- Pilih Nominal -->
+            <div class="form-card">
+                <h3>2. Pilih Nominal / Layanan</h3>
+                <div class="nominal-grid" id="nominalGrid">
+                    <!-- Dynamic Nominals inserted via JS -->
+                </div>
+            </div>
+
+            <!-- Pilih Pembayaran -->
+            <div class="form-card">
+                <h3>3. Pilih Metode Pembayaran</h3>
+                <div class="payment-grid">
+                    <div class="payment-item" onclick="selectPayment(this)">Dana</div>
+                    <div class="payment-item" onclick="selectPayment(this)">OVO</div>
+                    <div class="payment-item" onclick="selectPayment(this)">Gopay</div>
+                    <div class="payment-item" onclick="selectPayment(this)">QRIS All Payment</div>
+                </div>
+            </div>
+
+            <div class="checkout-buttons">
+
+    <button class="checkout-btn" onclick="processCheckout()">
+        PESAN SEKARANG
+    </button>
+
+    <button class="cart-add-btn" onclick="addToCart()">
+        🛒 MASUKKAN KE KERANJANG
+    </button>
+
+</div>
+        </div>
+    </div>
+
+    <!-- Professional Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>Tentang quuim⚡rket</h4>
+                <p><strong>quuim⚡rket</strong> adalah platform layanan digital dan injector game terpercaya, cepat, dan aman pilihan para gamer. Kami berkomitmen untuk menyediakan layanan transaksi instan berkualitas tinggi serta solusi peningkatan performa game (game booster) terbaik untuk menemani pengalaman bermain Anda sepanjang waktu.</p>
+            </div>
+            <div class="footer-links">
+                <p>💬 Jika Anda ada masukan, kritik, atau kendala transaksi, silakan hubungi <a href="https://wa.me/6289525973459" target="_blank">Contact Admin (WhatsApp)</a>.</p>
+                <p>🔔 Ikuti media sosial resmi kami untuk informasi promo terbaru, event menarik, dan update penting lainnya agar tidak ketinggalan: <a href="https://www.instagram.com/quuiescence?stkn=MWVjc2E2YjRqaGJlYQ==" target="_blank">Instagram quuim⚡rket</a>.</p>
+            </div>
+            <div class="copyright">
+                &copy; 2026 quuim⚡rket. All rights reserved. Professional Digital Marketplace.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Banner Slider Logic (Manual touch / drag & dots)
+        let currentSlideIndex = 0;
+        const track = document.getElementById('bannerTrack');
+        const dots = document.getElementsByClassName('banner-dot');
+        let startX = 0;
+        let isDragging = false;
+
+        function updateSlide(index) {
+            currentSlideIndex = index;
+            track.style.transform = `translateX(-${index * 33.333}%)`;
+            for(let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            if(dots[index]) dots[index].classList.add('active');
+        }
+
+        function currentSlide(index) {
+            updateSlide(index);
+        }
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            let currentX = e.touches[0].clientX;
+            let diff = startX - currentX;
+            if (diff > 50 && currentSlideIndex < 2) {
+                updateSlide(currentSlideIndex + 1);
+                isDragging = false;
+            } else if (diff < -50 && currentSlideIndex > 0) {
+                updateSlide(currentSlideIndex - 1);
+                isDragging = false;
+            }
+        });
+
+        track.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        // App Data & Navigation
+        let selectedProduct = '';
+        let selectedNominalPrice = 0;
+        let selectedNominalName = '';
+        let selectedPaymentMethod = '';
+// ==============================
+// CART SYSTEM
+// ==============================
+
+let cart = JSON.parse(localStorage.getItem('quuimCart')) || [];
+
+function saveCart() {
+    localStorage.setItem('quuimCart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+function updateCartCount() {
+
+    const count = document.getElementById('cartCount');
+
+    if (!count) return;
+
+    count.innerText = cart.length;
+
+    const cartButton = document.querySelector('.floating-cart');
+
+    if (cartButton) {
+
+        cartButton.classList.remove('cart-bump');
+
+        void cartButton.offsetWidth;
+
+        cartButton.classList.add('cart-bump');
+    }
+}
+
+function addToCart() {
+
+    let data = productData[selectedProduct];
+
+    if (!selectedNominalName) {
+        alert('Mohon pilih nominal atau paket terlebih dahulu!');
+        return;
+    }
+
+    const item = {
+        id: Date.now(),
+
+        product: selectedProduct,
+
+        productName: data.name,
+
+        variant: selectedNominalName,
+
+        price: selectedNominalPrice
+    };
+
+    cart.push(item);
+
+    saveCart();
+
+    alert('Produk berhasil dimasukkan ke keranjang! 🛒');
+
+    openCart();
+}
+
+function openCart() {
+
+    document.getElementById('home-page')
+        .classList.remove('active');
+
+    document.getElementById('detail-page')
+        .classList.remove('active');
+
+    document.getElementById('cart-checkout-page')
+        .classList.remove('active');
+document.getElementById('history-page').classList.remove('active');
+    document.getElementById('cart-page')
+        .classList.add('active');
+
+    renderCart();
+
+    window.scrollTo(0, 0);
+          }
+
+function renderCart() {
+
+    const container =
+        document.getElementById('cartItems');
+
+    if (!container) return;
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+            <div class="cart-empty">
+                <div style="font-size: 35px; margin-bottom: 10px;">
+                    🛒
+                </div>
+
+                <div style="font-weight: 600; margin-bottom: 5px;">
+                    Keranjang masih kosong
+                </div>
+
+                <div style="font-size: 0.8rem;">
+                    Pilih produk dan masukkan ke keranjang.
+                </div>
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML = '';
+
+    cart.forEach((item, index) => {
+
+        container.innerHTML += `
+            <div class="cart-item"
+                 onclick="openCartItem(${index})">
+
+                <div class="cart-item-info">
+
+                    <div class="cart-item-game">
+                        ${item.productName}
+                    </div>
+
+                    <div class="cart-item-variant">
+                        ${item.variant}
+                    </div>
+
+                    <div class="cart-item-price">
+                        Rp ${item.price.toLocaleString()}
+                    </div>
+
+                </div>
+
+                <button
+                    class="cart-delete"
+                    onclick="event.stopPropagation(); removeFromCart(${index})">
+                    ×
+                </button>
+
+            </div>
+        `;
+    });
+  const total = cart.reduce((sum, item) => {
+    return sum + Number(item.price || 0);
+}, 0);
+
+container.innerHTML += `
+    <div class="cart-summary">
+
+        <div class="cart-summary-row">
+            <span>Total Produk</span>
+            <span>${cart.length} item</span>
+        </div>
+
+        <div class="cart-summary-row cart-summary-total">
+            <span>Total Harga</span>
+            <span>Rp ${total.toLocaleString()}</span>
+        </div>
+
+        <button
+            class="cart-checkout-btn"
+            onclick="checkoutAllCart(event)">
+            CHECKOUT SEMUA
+        </button>
+
+    </div>
+`;
+}
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    saveCart();
+
+    renderCart();
+}
+let cartCheckoutPayment = '';
+
+function checkoutAllCart(event) {
+    if (event) {
+        event.stopPropagation();
+    }
+
+    if (cart.length === 0) {
+        alert('Keranjang masih kosong!');
+        return;
+    }
+
+    openCartCheckout();
+}
+
+function openCartCheckout() {
+    document.getElementById('home-page').classList.remove('active');
+    document.getElementById('cart-page').classList.remove('active');
+    document.getElementById('detail-page').classList.remove('active');
+  document.getElementById('history-page').classList.remove('active');
+    document.getElementById('cart-checkout-page').classList.add('active');
+
+    cartCheckoutPayment = '';
+
+    document.querySelectorAll('#cartCheckoutPayment .payment-item')
+        .forEach(item => item.classList.remove('selected'));
+
+    renderCartCheckout();
+
+    window.scrollTo(0, 0);
+}
+
+function renderCartCheckout() {
+    const container = document.getElementById('cartCheckoutItems');
+
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+
+        const data = productData[item.product];
+
+        total += Number(item.price || 0);
+
+        let fields = '';
+
+        if (data && data.noIdRequired) {
+
+            fields = `
+                <div style="font-size:0.78rem;color:var(--text-muted);">
+                    Produk ini tidak membutuhkan ID game.
+                </div>
+            `;
+
+        } else if (data && data.hasServer) {
+
+            fields = `
+                <div class="input-group">
+
+                    <div>
+                        <label>ID User</label>
+
+                        <input
+                            type="text"
+                            id="cartUserId_${index}"
+                            placeholder="Masukkan User ID">
+                    </div>
+
+                    <div>
+                        <label>ID Server</label>
+
+                        <input
+                            type="text"
+                            id="cartServerId_${index}"
+                            placeholder="Masukkan Server ID">
+                    </div>
+
+                </div>
+            `;
+
+        } else {
+
+            fields = `
+                <div class="input-group single">
+
+                    <div>
+                        <label>ID Free Fire</label>
+
+                        <input
+                            type="text"
+                            id="cartUserId_${index}"
+                            placeholder="Masukkan User ID Free Fire">
+                    </div>
+
+                </div>
+            `;
+        }
+
+        container.innerHTML += `
+            <div class="cart-checkout-item">
+
+                <h3>
+                    ${index + 1}. ${item.productName}
+                </h3>
+
+                <div class="cart-checkout-variant">
+                    ${item.variant} —
+                    Rp ${Number(item.price || 0).toLocaleString()}
+                </div>
+
+                ${fields}
+
+            </div>
+        `;
+    });
+
+    document.getElementById('cartCheckoutTotal').innerText =
+        'Rp ' + total.toLocaleString();
+}
+
+function selectCartPayment(element) {
+
+    document
+        .querySelectorAll('#cartCheckoutPayment .payment-item')
+        .forEach(item => item.classList.remove('selected'));
+
+    element.classList.add('selected');
+
+    cartCheckoutPayment = element.innerText.trim();
+}
+
+function submitCartCheckout() {
+
+    if (cart.length === 0) {
+        alert('Keranjang masih kosong!');
+        return;
+    }
+
+    if (!cartCheckoutPayment) {
+        alert('Mohon pilih metode pembayaran!');
+        return;
+    }
+
+    let total = 0;
+
+    let message =
+        `hallo quuim⚡rket ✌🏻\n\nsaya mau order.\n\n`;
+
+    for (let i = 0; i < cart.length; i++) {
+
+        const item = cart[i];
+        const data = productData[item.product];
+
+        const userEl =
+            document.getElementById(`cartUserId_${i}`);
+
+        const serverEl =
+            document.getElementById(`cartServerId_${i}`);
+
+        const userId =
+            userEl ? userEl.value.trim() : '';
+
+        const serverId =
+            serverEl ? serverEl.value.trim() : '';
+
+        if (data && !data.noIdRequired && !userId) {
+
+            alert(
+                `Mohon masukkan ID untuk ${item.productName}!`
+            );
+
+            userEl.focus();
+
+            return;
+        }
+
+        if (data && data.hasServer && !serverId) {
+
+            alert(
+                `Mohon masukkan Server ID untuk ${item.productName}!`
+            );
+
+            serverEl.focus();
+
+            return;
+        }
+
+        total += Number(item.price || 0);
+
+        message +=
+            `${i + 1}. game: ${item.productName}\n`;
+
+        message +=
+            `varian: ${item.variant}\n`;
+
+        message +=
+            `id: ${data.noIdRequired ? '-' : userId}\n`;
+
+        if (data.hasServer) {
+
+            message +=
+                `id server: (${serverId})\n`;
+        }
+
+        message +=
+            `harga: Rp ${Number(item.price || 0).toLocaleString()}\n\n`;
+    }
+
+    message +=
+        `total: Rp ${total.toLocaleString()}\n` +
+        `pembayaran: ${cartCheckoutPayment}`;
+
+
+    /* ==============================
+       SIMPAN RIWAYAT PESANAN
+    ============================== */
+
+    const orders =
+        JSON.parse(
+            localStorage.getItem('quuimOrders') || '[]'
+        );
+
+    const order = {
+
+        id:
+            'QKM-' +
+            Date.now().toString().slice(-6),
+
+        date:
+            new Date().toLocaleString('id-ID'),
+
+        items: cart.map(item => ({
+
+            productName: item.productName,
+
+            variant: item.variant,
+
+            price: Number(item.price || 0)
+
+        })),
+
+        total: total,
+
+        payment: cartCheckoutPayment,
+
+        status: 'Menunggu Pembayaran'
+
+    };
+
+    orders.unshift(order);
+
+    localStorage.setItem(
+        'quuimOrders',
+        JSON.stringify(orders)
+    );
+
+
+    /* ==============================
+       BUKA WHATSAPP
+    ============================== */
+
+    const encodedMessage =
+        encodeURIComponent(message);
+
+    window.open(
+        `https://wa.me/6289525973459?text=${encodedMessage}`,
+        '_blank'
+    );
+
+}
+      function openHistory() {
+
+    document.getElementById('home-page').classList.remove('active');
+    document.getElementById('detail-page').classList.remove('active');
+    document.getElementById('cart-page').classList.remove('active');
+    document.getElementById('cart-checkout-page').classList.remove('active');
+
+    document.getElementById('history-page').classList.add('active');
+
+    renderOrderHistory();
+
+    window.scrollTo(0, 0);
+}
+
+
+function renderOrderHistory() {
+
+    const container =
+        document.getElementById('orderHistory');
+
+    if (!container) return;
+
+    const orders =
+        JSON.parse(
+            localStorage.getItem('quuimOrders') || '[]'
+        );
+
+    if (orders.length === 0) {
+
+        container.innerHTML = `
+            <div class="history-empty">
+
+                <div style="font-size:35px;margin-bottom:10px;">
+                    🧾
+                </div>
+
+                <div style="font-weight:600;margin-bottom:5px;">
+                    Belum ada pesanan
+                </div>
+
+                <div style="font-size:0.78rem;">
+                    Pesanan yang kamu checkout akan muncul di sini.
+                </div>
+
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML = '';
+
+    orders.forEach(order => {
+
+        let productsHTML = '';
+
+        order.items.forEach(item => {
+
+            productsHTML += `
+                <div class="order-product">
+
+                    <div class="order-product-name">
+                        ${item.productName}
+                    </div>
+
+                    <div class="order-product-variant">
+                        ${item.variant}
+                    </div>
+
+                    <div class="order-product-price">
+                        Rp ${Number(item.price || 0).toLocaleString()}
+                    </div>
+
+                </div>
+            `;
+        });
+
+        container.innerHTML += `
+
+            <div class="order-card">
+
+                <div class="order-card-top">
+
+                    <div class="order-id">
+                        ${order.id}
+                    </div>
+
+                    <div class="order-status">
+                        ${order.status}
+                    </div>
+
+                </div>
+
+                <div class="order-date">
+                    ${order.date}
+                </div>
+
+                ${productsHTML}
+
+                <div class="order-total">
+                    <span>Total</span>
+                    <span>
+                        Rp ${Number(order.total || 0).toLocaleString()}
+                    </span>
+                </div>
+
+                <div class="order-payment">
+                    Pembayaran: ${order.payment}
+                </div>
+
+            </div>
+
+        `;
+    });
+}
+function openCartItem(index) {
+
+    const item = cart[index];
+
+    if (!item) return;
+
+    openDetail(
+        item.product,
+        item.variant,
+        item.price
+    );
+}
+        const productData = {
+            ml: {
+                name: 'Mobile Legends',
+                type: 'game',
+                hasServer: true,
+                items: [
+                    { name: 'inject ml 5hari', price: 18000 },
+                    { name: 'inject ml 7hari', price: 20000 },
+                    { name: 'inject ml 30hari', price: 50000 },
+                    { name: 'inject ml 60hari', price: 80000 }
+                ]
+            },
+            ff: {
+                name: 'Free Fire',
+                type: 'game',
+                hasServer: false,
+                items: [
+                    { name: 'inject ff basic', price: 15000 },
+                    { name: 'inject ff medium', price: 25000 },
+                    { name: 'inject ff high', price: 40000 },
+                    { name: 'inject ff for WNI', price: 100000 }
+                ]
+            },
+            booster: {
+                name: 'Game Booster',
+                type: 'booster',
+                hasServer: false,
+                noIdRequired: true,
+                items: [
+                    { name: 'Booster Basic (1 Bulan)', price: 15000 },
+                    { name: 'Booster Pro (Permanent)', price: 35000 }
+                ]
+            }
+        };
+
+        function filterGames() {
+            let query = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('product-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].querySelector('.product-name').innerText.toLowerCase();
+                if (name.includes(query)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        function goHome() {
+document.getElementById('cart-checkout-page')
+    .classList.remove('active');
+          document.getElementById('history-page').classList.remove('active');
+    document.getElementById('home-page')
+        .classList.add('active');
+
+    document.getElementById('detail-page')
+        .classList.remove('active');
+
+    document.getElementById('cart-page')
+        .classList.remove('active');
+
+    window.scrollTo(0, 0);
+        }
+
+        function openDetail(key, cartVariant = '', cartPrice = 0) {
+
+    selectedProduct = key;
+
+    showProductRating();
+    showProductReviews();
+
+    // Reset pilihan pembayaran setiap membuka checkout
+    selectedPaymentMethod = '';
+
+    let data = productData[key];
+
+    document.getElementById('detail-title').innerText =
+        'Top Up / Beli: ' + data.name;
+            document.getElementById('detail-title').innerText = 'Top Up / Beli: ' + data.name;
+            
+            let inputContainer = document.getElementById('inputContainer');
+            let formLabel = document.getElementById('form-label-id');
+            let accountSection = document.getElementById('accountSection');
+            
+            if (data.noIdRequired) {
+                accountSection.style.display = 'none';
+            } else {
+                accountSection.style.display = 'block';
+                if (data.hasServer) {
+                    formLabel.innerText = '1. Masukkan User ID & Server';
+                    inputContainer.className = 'input-group';
+                    inputContainer.innerHTML = `
+                        <input type="text" id="userId" placeholder="User ID">
+                        <input type="text" id="serverId" placeholder="Server ID">
+                    `;
+                } else {
+                    formLabel.innerText = '1. Masukkan User ID Free Fire';
+                    inputContainer.className = 'input-group single';
+                    inputContainer.innerHTML = `
+                        <input type="text" id="userId" placeholder="User ID Free Fire">
+                    `;
+                }
+            }
+
+            let nominalGrid = document.getElementById('nominalGrid');
+            nominalGrid.innerHTML = '';
+            data.items.forEach((item) => {
+
+    let selectedClass =
+        cartVariant === item.name ? 'selected' : '';
+
+    nominalGrid.innerHTML += `
+        <div
+            class="nominal-item ${selectedClass}"
+            onclick="selectNominal(this, '${item.name}', ${item.price})"
+        >
+
+            <div class="item-title">
+                ${item.name}
+            </div>
+
+            <div class="item-price">
+                Rp ${item.price.toLocaleString()}
+            </div>
+
+        </div>
+    `;
+
+    if (cartVariant === item.name) {
+        selectedNominalName = item.name;
+        selectedNominalPrice = item.price;
+    }
+});
+
+            document.getElementById('home-page').classList.remove('active');
+            document.getElementById('detail-page').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function selectNominal(element, name, price) {
+            let items = document.getElementsByClassName('nominal-item');
+            for(let it of items) it.classList.remove('selected');
+            element.classList.add('selected');
+            selectedNominalName = name;
+            selectedNominalPrice = price;
+        }
+
+        document.addEventListener('click', function(e) {
+            if(e.target.classList.contains('payment-item')) {
+                let items = document.getElementsByClassName('payment-item');
+                for(let it of items) it.classList.remove('selected');
+                e.target.classList.add('selected');
+                selectedPaymentMethod = e.target.innerText;
+            }
+        });
+
+        function processCheckout() {
+            let data = productData[selectedProduct];
+            let userId = document.getElementById('userId') ? document.getElementById('userId').value.trim() : '';
+            let serverId = document.getElementById('serverId') ? document.getElementById('serverId').value.trim() : '';
+
+            if(!data.noIdRequired && !userId) {
+                alert('Mohon masukkan ID Anda!');
+                return;
+            }
+            if(data.hasServer && !serverId) {
+                alert('Mohon masukkan Server ID!');
+                return;
+            }
+            if(!selectedNominalName) {
+                alert('Mohon pilih nominal atau paket terlebih dahulu!');
+                return;
+            }
+            if(!selectedPaymentMethod) {
+                alert('Mohon pilih metode pembayaran!');
+                return;
+            }
+
+            // Format pesan WhatsApp persis seperti permintaan
+            let message = `hallo quuim⚡rket ✌🏻 \n\nsaya mau order.\ngame: ${data.name}\nvarian: ${selectedNominalName}\nid: ${data.noIdRequired ? '-' : userId}`;
+            
+            if(data.hasServer) {
+                message += `\nid server: (${serverId})`;
+            }
+
+            message += `\nharga: Rp ${selectedNominalPrice.toLocaleString()}\npembayaran: ${selectedPaymentMethod}`;
+            
+            let encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/6289525973459?text=${encodedMessage}`, '_blank');
+        }
+      const translations = {
+    id: {
+        popular: "🔥 POPULER SEKARANG!",
+        search: "Cari game (Mobile Legends, Free Fire, Game Booster)...",
+        back: "← Kembali ke Beranda",
+        buy: "PESAN SEKARANG",
+        about: "Tentang quuim⚡rket",
+        aboutText: "quuim⚡rket adalah platform layanan digital dan injector game terpercaya, cepat, dan aman pilihan para gamer. Kami berkomitmen untuk menyediakan layanan transaksi instan berkualitas tinggi serta solusi peningkatan performa game (game booster) terbaik untuk menemani pengalaman bermain Anda sepanjang waktu.",
+        contact: "💬 Jika Anda ada masukan, kritik, atau kendala transaksi, silakan hubungi",
+        follow: "🔔 Ikuti media sosial resmi kami untuk informasi promo terbaru, event menarik, dan update penting lainnya agar tidak ketinggalan:"
+    },
+
+    en: {
+        popular: "🔥 POPULAR NOW!",
+        search: "Search game (Mobile Legends, Free Fire, Game Booster)...",
+        back: "← Back to Home",
+        buy: "ORDER NOW",
+        about: "About quuim⚡rket",
+        aboutText: "quuim⚡rket is a trusted, fast, and secure digital service and game injector platform for gamers. We are committed to providing high-quality instant transactions and reliable game performance solutions to enhance your gaming experience.",
+        contact: "💬 If you have any feedback, criticism, or transaction issues, please contact",
+        follow: "🔔 Follow our official social media for the latest promotions, events, and important updates:"
+    }
+};
+
+function setLanguage(lang) {
+
+    document.querySelector('.section-title').innerText =
+        translations[lang].popular;
+
+    document.getElementById('searchInput').placeholder =
+        translations[lang].search;
+
+    document.querySelector('.back-btn').innerText =
+        translations[lang].back;
+
+    document.querySelector('.checkout-btn').innerText =
+        translations[lang].buy;
+
+    document.querySelector('.footer-about h4').innerText =
+        translations[lang].about;
+
+    document.querySelector('.footer-about p').innerHTML =
+        `<strong>quuim⚡rket</strong> ${translations[lang].aboutText.replace("quuim⚡rket ", "")}`;
+
+    const footerTexts =
+        document.querySelectorAll('.footer-links p');
+
+    footerTexts[0].innerHTML =
+        `${translations[lang].contact}
+        <a href="https://wa.me/6289525973459" target="_blank">
+        Contact Admin (WhatsApp)</a>.`;
+
+    footerTexts[1].innerHTML =
+        `${translations[lang].follow}
+        <a href="https://www.instagram.com/quuiescence?stkn=MWVjc2E2YjRqaGJlYQ==" target="_blank">
+        Instagram quuim⚡rket</a>.`;
+
+    document.getElementById('langID')
+        .classList.toggle('active', lang === 'id');
+
+    document.getElementById('langEN')
+        .classList.toggle('active', lang === 'en');
+
+    localStorage.setItem('language', lang);
+}
+
+const savedLanguage =
+    localStorage.getItem('language') || 'id';
+
+setLanguage(savedLanguage);
+      function openCustomerService() {
+    const message = "hallo quuim⚡rket saya punya kendala, berikut tentang kendala saya:";
+    const encodedMessage = encodeURIComponent(message);
+
+    window.open(
+        `https://wa.me/6289525973459?text=${encodedMessage}`,
+        '_blank'
+    );
+}
+      
+        /* ==============================
+   RATING & ULASAN PRODUK
+============================== */
+
+function getProductRatings() {
+
+    return JSON.parse(
+        localStorage.getItem('quuimProductRatings') || '{}'
+    );
+
+}
+
+function giveProductRating(rating) {
+
+    if (!selectedProduct) return;
+
+    const ratings = getProductRatings();
+
+    if (!ratings[selectedProduct]) {
+
+        ratings[selectedProduct] = {
+            total: 0,
+            count: 0
+        };
+
+    }
+
+    ratings[selectedProduct].total += rating;
+    ratings[selectedProduct].count += 1;
+
+    localStorage.setItem(
+        'quuimProductRatings',
+        JSON.stringify(ratings)
+    );
+
+    showProductRating();
+
+    document.getElementById('detailRatingMessage').innerText =
+        'Rating kamu berhasil disimpan ✓';
+}
+
+
+function showProductRating() {
+
+    if (!selectedProduct) return;
+
+    const ratings = getProductRatings();
+    const data = ratings[selectedProduct];
+
+    const stars =
+        document.querySelectorAll('.detail-rating-stars span');
+
+    stars.forEach(star => {
+        star.classList.remove('active');
+    });
+
+    if (!data || data.count === 0) {
+
+        document.getElementById('detailRatingScore').innerText =
+            'Belum ada rating';
+
+        return;
+    }
+
+    const average =
+        data.total / data.count;
+
+    const rounded =
+        Math.round(average);
+
+    stars.forEach((star, index) => {
+
+        if (index < rounded) {
+            star.classList.add('active');
+        }
+
+    });
+
+    document.getElementById('detailRatingScore').innerText =
+        `⭐ ${average.toFixed(1)} / 5 • ${data.count} rating`;
+}
+
+
+/* ==============================
+   ULASAN
+============================== */
+
+function getProductReviews() {
+
+    return JSON.parse(
+        localStorage.getItem('quuimProductReviews') || '{}'
+    );
+
+}
+
+
+function submitProductReview() {
+
+    if (!selectedProduct) return;
+
+    const input =
+        document.getElementById('reviewInput');
+
+    const text =
+        input.value.trim();
+
+    if (!text) {
+
+        alert('Tulis ulasan terlebih dahulu!');
+
+        input.focus();
+
+        return;
+    }
+
+    const reviews = getProductReviews();
+
+    if (!reviews[selectedProduct]) {
+        reviews[selectedProduct] = [];
+    }
+
+    reviews[selectedProduct].push({
+
+        text: text,
+
+        date: new Date().toLocaleDateString(
+            'id-ID',
+            {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            }
+        )
+
+    });
+
+    localStorage.setItem(
+        'quuimProductReviews',
+        JSON.stringify(reviews)
+    );
+
+    input.value = '';
+
+    showProductReviews();
+}
+
+
+function showProductReviews() {
+
+    const container =
+        document.getElementById('reviewList');
+
+    if (!container || !selectedProduct) return;
+
+    const reviews =
+        getProductReviews();
+
+    const productReviews =
+        reviews[selectedProduct] || [];
+
+    if (productReviews.length === 0) {
+
+        container.innerHTML = `
+            <div style="
+                color:var(--text-muted);
+                font-size:0.75rem;
+                text-align:center;
+                padding:12px 0;
+            ">
+                Belum ada ulasan.
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML = `
+        <div style="
+            font-size:0.8rem;
+            font-weight:700;
+            margin-bottom:8px;
+        ">
+            Ulasan (${productReviews.length})
+        </div>
+    `;
+
+    productReviews
+        .slice()
+        .reverse()
+        .forEach(review => {
+
+            container.innerHTML += `
+
+                <div class="review-item">
+
+                    <div class="review-item-rating">
+                        ★★★★★
+                    </div>
+
+                    <div class="review-item-text">
+                        ${escapeReviewText(review.text)}
+                    </div>
+
+                    <div class="review-item-date">
+                        ${review.date}
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+}
+
+
+function escapeReviewText(text) {
+
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+
+}
+
+
+/* ==============================
+   CLOSE PROMO
+============================== */
+
+function closePromo() {
+    document.getElementById("promoModal").style.display = "none";
+}
+
+function closePromo() {
+    document.getElementById("promoModal").style.display = "none";
+}
+
+updateCartCount();
+      updateCartCount();
+      const escanorMessage =
+    "website cepat, aman & terpercaya hanya di quuim⚡rket.com";
+
+let escanorIndex = 0;
+let escanorDeleting = false;
+
+function typeEscanorText() {
+
+    const textEl = document.getElementById("escanorText");
+
+    if (!textEl) return;
+
+    if (!escanorDeleting) {
+
+        textEl.textContent =
+            escanorMessage.slice(0, escanorIndex + 1);
+
+        escanorIndex++;
+
+        if (escanorIndex >= escanorMessage.length) {
+
+            escanorDeleting = true;
+
+            setTimeout(typeEscanorText, 1800);
+
+            return;
+        }
+
+        setTimeout(typeEscanorText, 55);
+
+    } else {
+
+        textEl.textContent =
+            escanorMessage.slice(0, escanorIndex - 1);
+
+        escanorIndex--;
+
+        if (escanorIndex <= 0) {
+
+            escanorDeleting = false;
+
+            setTimeout(typeEscanorText, 500);
+
+            return;
+        }
+
+        setTimeout(typeEscanorText, 30);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    typeEscanorText();
+});
+    </script>
+  <!-- FLOATING CART -->
+<div class="floating-cart" onclick="openCart()">
+    🛒
+    <span>Keranjang</span>
+    <b id="cartCount">0</b>
+</div>
+<button class="history-button" onclick="openHistory()">
+    🧾
+</button>
+<div class="customer-service" onclick="openCustomerService()">
+    💬
+    <span>Customer Service</span>
+</div>
+  <div class="customer-service" onclick="openCustomerService()">
+    💬
+    <span>Customer Service</span>
+</div>
+  <!-- POPUP PROMO -->
+<div class="promo-modal" id="promoModal">
+    <div class="promo-box">
+
+        <button class="promo-close" onclick="closePromo()" aria-label="Tutup">
+            ×
+        </button>
+
+        <img src="1790514543431.png" alt="Promo quuim⚡rket">
+
+    </div>
+</div>
+  <!-- ESCANOR CHIBI -->
+<div class="escanor-mascot">
+
+    <div class="escanor-bubble">
+        <span id="escanorText"></span>
+    </div>
+
+    <img
+        src="1790570616315-removebg-preview.png"
+        alt="Escanor"
+        class="escanor-img"
+    >
+
+</div>
+</body>
+</html>
